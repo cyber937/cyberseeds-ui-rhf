@@ -1,22 +1,21 @@
 # 📦 cyberseeds-ui-rhf
 
-`cyberseeds-ui-rhf` は、[cyberseeds-ui](https://github.com/cyberseeds/cyberseeds-ui) を拡張し、[`react-hook-form`](https://react-hook-form.com/) と統合されたフォームコンポーネント群を提供する React ライブラリです。
-
-TypeScript + Tailwind CSS + Zod を前提とし、型安全かつスタイル統一されたフォームを簡単に構築できます。
+**cyberseeds-ui-rhf** is an extension package of [cyberseeds-ui](https://github.com/cyberseeds/cyberseeds-ui) that provides form components integrated with [React Hook Form](https://react-hook-form.com/).  
+Designed for TypeScript + Tailwind CSS + Zod environments, this library helps you build accessible, styled, and type-safe forms with minimal effort.
 
 ---
 
-## ✅ 特長
+## ✅ Features
 
-- `react-hook-form` 対応の再利用可能なフォーム UI コンポーネント
-- `zod` スキーマバリデーションとの親和性
-- `cyberseeds-ui` に準拠した一貫したデザイン
-- 型安全・ユニットテスト容易な設計
+- Prebuilt, reusable form components compatible with `react-hook-form`
+- First-class support for `zod` schema validation
+- Fully styled with `cyberseeds-ui` design system
+- Type-safe, testable, and DX-friendly
 
-## 🚀 インストール
+## 🚀 Installation
 
 ```bash
 npm install cyberseeds-ui cyberseeds-ui-rhf react-hook-form zod
-# または
+# or
 yarn add cyberseeds-ui cyberseeds-ui-rhf react-hook-form zod
 ```
