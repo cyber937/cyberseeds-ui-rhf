@@ -14,8 +14,8 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       entry: path.resolve(__dirname, "./src/components/index.tsx"),
-      name: "CyberseedsUI",
-      fileName: "cyberseeds-ui",
+      name: "CyberseedsUI React-Hool-Form",
+      fileName: "cyberseeds-ui-rhf",
     },
     rollupOptions: {
       external: ["react", "react-dom"],
