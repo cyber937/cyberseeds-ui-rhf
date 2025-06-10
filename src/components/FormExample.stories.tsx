@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "cyberseeds-ui";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFCheckbox } from "./RHFCheckbox/RHFCheckbox";
