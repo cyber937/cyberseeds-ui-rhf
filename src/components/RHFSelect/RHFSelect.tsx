@@ -28,7 +28,7 @@ export function RHFSelect<T extends object, K extends Path<T>>({
   name,
   control,
   scale = "md",
-  color = "red",
+  color = "blue",
   options,
   rules,
   ...props

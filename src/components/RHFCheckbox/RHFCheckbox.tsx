@@ -18,7 +18,7 @@ export function RHFCheckbox<T extends object, K extends Path<T>>({
   control,
   label = "checkbox",
   scale = "md",
-  color = "red",
+  color = "blue",
   defaultValue,
   ...props
 }: RHFCheckboxProps<T, K>) {

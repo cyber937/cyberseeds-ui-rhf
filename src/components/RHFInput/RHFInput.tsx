@@ -26,7 +26,7 @@ export function RHFInput<T extends object, K extends Path<T>>({
   control,
   label = "",
   scale = "md",
-  color = "red",
+  color = "blue",
   require = false,
   defaultValue,
   rules,
@@ -37,7 +37,7 @@ export function RHFInput<T extends object, K extends Path<T>>({
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue}
+      defaultValue={defaultValue ?? ("" as PathValue<T, K>)}
       render={({ field, fieldState }) => {
         return (
           <div className="space-y-1">
@@ -51,7 +51,9 @@ export function RHFInput<T extends object, K extends Path<T>>({
               {...props}
             />
             {fieldState.error && (
-              <p className="text-xs text-red-600">{fieldState.error.message}</p>
+              <p className="text-xs text-red-600 ml-3">
+                {fieldState.error.message}
+              </p>
             )}
           </div>
         );

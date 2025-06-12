@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button } from "cyberseeds-ui";
+import { Button, UIColorProvider } from "cyberseeds-ui";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFCheckbox } from "./RHFCheckbox/RHFCheckbox";
 import { RHFInput } from "./RHFInput/RHFInput";
@@ -53,7 +53,6 @@ const MyForm = () => {
           <div>
             <RHFInput
               label="First Name"
-              color="blue"
               name="firstName"
               control={methods.control}
               rules={{ required: "First Name is required" }}
@@ -63,7 +62,6 @@ const MyForm = () => {
           <div>
             <RHFInput
               label="Last Name"
-              color="blue"
               name="lastName"
               control={methods.control}
               rules={{ required: "Last Name is required" }}
@@ -73,7 +71,6 @@ const MyForm = () => {
         </div>
         <RHFCheckbox
           label="Is Student?"
-          color="blue"
           name="isStudent"
           control={methods.control}
         />
@@ -81,7 +78,6 @@ const MyForm = () => {
         <div>
           <RHFTextArea
             label="Comment"
-            color="blue"
             name="comment"
             control={methods.control}
             rules={{ required: "Comment is required" }}
@@ -90,7 +86,6 @@ const MyForm = () => {
         </div>
         <div>
           <RHFRadioGroup
-            color="blue"
             options={radioButtonOptions}
             name="gender"
             defaultValue="female"
@@ -100,7 +95,6 @@ const MyForm = () => {
         </div>
         <div>
           <RHFSelect
-            color="blue"
             options={selectOptions}
             name="fruit"
             rules={{ required: "Fruit is required" }}
@@ -110,7 +104,6 @@ const MyForm = () => {
         </div>
         <div>
           <RHFSwitch
-            color="blue"
             name="taggle"
             control={methods.control}
             onLable="オン"
@@ -121,15 +114,12 @@ const MyForm = () => {
         <div>
           <RHFPhoneInput
             label="Phone Number"
-            color="blue"
             name="phoneNumber"
             rules={{ required: "Phone Number is required" }}
             control={methods.control}
           />
         </div>
-        <Button type="submit" color="blue">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </FormProvider>
   );
@@ -144,5 +134,9 @@ export default meta;
 type Story = StoryObj<typeof RHFInput>;
 
 export const Default: Story = {
-  render: () => <MyForm />,
+  render: () => (
+    <UIColorProvider initialColor="yellow">
+      <MyForm />
+    </UIColorProvider>
+  ),
 };
