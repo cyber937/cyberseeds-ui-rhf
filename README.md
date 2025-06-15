@@ -19,3 +19,15 @@ npm install cyberseeds-ui cyberseeds-ui-rhf react-hook-form zod
 # or
 yarn add cyberseeds-ui cyberseeds-ui-rhf react-hook-form zod
 ```
+
+## 🧱 Components
+
+| Component       | Description                                                                   |
+| --------------- | ----------------------------------------------------------------------------- |
+| `RHFCheckbok`   | A controlled checkbox component integrated with React Hook Form.              |
+| `RHFInput`      | A text input field wired to React Hook Form with validation support.          |
+| `RHFPhoneInput` | A phone number input component styled and connected to React Hook Form.       |
+| `RHFRadioGroup` | A group of radio buttons managed by React Hook Form.                          |
+| `RHFSelect`     | A select dropdown component that works seamlessly with React Hook Form.       |
+| `RHFSwitch`     | A toggle switch component linked to a boolean field in React Hook Form. hooks |
+| `RHFTextArea`   | A textarea component bound to React Hook Form for multi-line input.           |
