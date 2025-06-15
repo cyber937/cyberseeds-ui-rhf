@@ -14,36 +14,41 @@ type FormValues = {
   lastName: string;
   isStudent: boolean;
   comment: string;
-  gender: string;
-  fruit: string | undefined;
+  fruit: string;
+  language: string;
   taggle: boolean;
   phoneNumber: string;
 };
 
-const MyForm = () => {
+const Form = () => {
   const methods = useForm<FormValues>({
-    defaultValues: { lastName: "" },
+    defaultValues: {
+      lastName: "",
+      firstName: "",
+      isStudent: false,
+      comment: "",
+      fruit: "",
+      language: "",
+      taggle: false,
+      phoneNumber: ""
+    },
   });
-
-  const isStudent = methods.watch("isStudent");
-  const fruit = methods.watch("fruit");
-  const taggle = methods.watch("taggle");
 
   const onSubmit = (data: FormValues) => {
     console.log("Submitted:", data);
   };
 
   const radioButtonOptions = [
-    { label: "男性", value: "male" },
-    { label: "女性", value: "female" },
-    { label: "その他", value: "other" },
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Orange", value: "orange" },
   ];
 
   const selectOptions = [
-    { label: "選んでください", value: undefined },
-    { label: "りんご", value: "apple" },
-    { label: "みかん", value: "orange" },
-    { label: "バナナ", value: "banana" },
+    { label: "Please select", value: "" },
+    { label: "English", value: "english" },
+    { label: "Spanish", value: "spanish" },
+    { label: "French", value: "french" },
   ];
 
   return (
@@ -74,7 +79,6 @@ const MyForm = () => {
           name="isStudent"
           control={methods.control}
         />
-        {isStudent && <div>Yes, Student</div>}
         <div>
           <RHFTextArea
             label="Comment"
@@ -87,29 +91,26 @@ const MyForm = () => {
         <div>
           <RHFRadioGroup
             options={radioButtonOptions}
-            name="gender"
-            defaultValue="female"
-            rules={{ required: "Gender is required" }}
+            name="fruit"
+            rules={{ required: "Fruite is required" }}
             control={methods.control}
           />
         </div>
         <div>
           <RHFSelect
             options={selectOptions}
-            name="fruit"
-            rules={{ required: "Fruit is required" }}
+            name="language"
+            rules={{ validate: (value) => value !== "" || "Please select a language" }}
             control={methods.control}
           />
-          <div>{fruit}</div>
         </div>
         <div>
           <RHFSwitch
             name="taggle"
             control={methods.control}
-            onLable="オン"
-            offLable="オフ"
+            onLable="On"
+            offLable="Off"
           />
-          <div>{taggle}</div>
         </div>
         <div>
           <RHFPhoneInput
@@ -125,18 +126,18 @@ const MyForm = () => {
   );
 };
 
-const meta: Meta<typeof RHFInput> = {
-  title: "Components/Form",
-  component: RHFInput,
+const meta: Meta<typeof Form> = {
+  title: "Form",
+  component: Form,
 };
 
 export default meta;
-type Story = StoryObj<typeof RHFInput>;
+type Story = StoryObj<typeof Form>;
 
 export const Default: Story = {
   render: () => (
-    <UIColorProvider initialColor="yellow">
-      <MyForm />
+    <UIColorProvider initialColor="red">
+      <Form />
     </UIColorProvider>
   ),
 };
