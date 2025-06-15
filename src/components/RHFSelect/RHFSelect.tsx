@@ -38,7 +38,7 @@ export function RHFSelect<T extends object, K extends Path<T>>({
       name={name}
       control={control}
       rules={rules}
-      render={({ field }) => {
+      render={({ field, fieldState }) => {
         return (
           <div>
             <Select
@@ -56,6 +56,11 @@ export function RHFSelect<T extends object, K extends Path<T>>({
                 />
               ))}
             </Select>
+            {fieldState.error && (
+              <p className="text-xs text-red-600 ml-3">
+                {fieldState.error.message}
+              </p>
+            )}
           </div>
         );
       }}
