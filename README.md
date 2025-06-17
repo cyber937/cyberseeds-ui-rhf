@@ -3,7 +3,7 @@
 **cyberseeds-ui-rhf** is an extension package of [cyberseeds-ui](https://github.com/cyber937/cyberseeds-ui) that provides form components integrated with [React Hook Form](https://react-hook-form.com/).  
 Designed for TypeScript + Tailwind CSS + Zod environments, this library helps you build accessible, styled, and type-safe forms with minimal effort.
 
-[![Storybook](https://img.shields.io/badge/Storybook-online-orange?logo=storybook)]([https://cyber937.github.io/cyberseeds-ui/?path=/docs/overview--docs](https://cyber937.github.io/cyberseeds-ui-rhf/?path=/story/form--default)) Please check the interactive UI catalog 👉
+[![Storybook](https://img.shields.io/badge/Storybook-online-orange?logo=storybook)](https://cyber937.github.io/cyberseeds-ui-rhf/?path=/story/form--default) Please check the interactive UI catalog 👉
 
 ---
 
