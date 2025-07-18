@@ -31,6 +31,7 @@ export function RHFCheckbox<T extends object, K extends Path<T>>({
         return (
           <Checkbox
             {...field}
+            checked={field.value}
             label={label}
             scale={scale}
             color={color}
