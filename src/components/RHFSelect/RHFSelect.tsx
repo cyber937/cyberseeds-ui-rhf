@@ -42,7 +42,7 @@ export function RHFSelect<T extends object, K extends Path<T>>({
         return (
           <div>
             <Select
-              value={field.value}
+              value={field.value ?? ""}
               onChange={field.onChange}
               scale={scale}
               color={color}
