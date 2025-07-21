@@ -43,6 +43,7 @@ export function RHFInput<T extends object, K extends Path<T>>({
           <div className="space-y-1">
             <Input
               {...field}
+              value={field.value ?? ""}
               label={label}
               scale={scale}
               color={color}
