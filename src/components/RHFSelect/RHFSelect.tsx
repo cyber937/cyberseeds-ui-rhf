@@ -29,10 +29,11 @@ export function RHFSelect<T extends object, K extends Path<T>>({
   control,
   scale = "md",
   color = "blue",
-  options,
+  options = [],
   rules,
   ...props
 }: RHFSelectProps<T, K>) {
+  const safeOptions = Array.isArray(options) ? options : [];
   return (
     <Controller
       name={name}
@@ -48,7 +49,7 @@ export function RHFSelect<T extends object, K extends Path<T>>({
               color={color}
               {...props}
             >
-              {options.map((opt) => (
+              {safeOptions.map((opt) => (
                 <SelectOption
                   key={opt.value}
                   label={opt.label}
