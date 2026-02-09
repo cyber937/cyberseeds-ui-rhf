@@ -22,14 +22,30 @@ npm install cyberseeds-ui cyberseeds-ui-rhf react-hook-form zod
 yarn add cyberseeds-ui cyberseeds-ui-rhf react-hook-form zod
 ```
 
+### Peer Dependencies
+
+| Package | Required Version |
+| --- | --- |
+| `react` | `^19.1.0` |
+| `react-dom` | `^19.1.0` |
+| `react-hook-form` | `^7.57.0` |
+| `cyberseeds-ui` | `^0.3.0` |
+
+### Version Compatibility
+
+| cyberseeds-ui-rhf | cyberseeds-ui | react-hook-form |
+| --- | --- | --- |
+| `0.2.x` | `0.3.x` | `7.x` |
+| `0.1.x` | `0.2.x – 0.3.x` | `7.x` |
+
 ## 🧱 Components
 
 | Component       | Description                                                                   |
 | --------------- | ----------------------------------------------------------------------------- |
-| `RHFCheckbok`   | A controlled checkbox component integrated with React Hook Form.              |
+| `RHFCheckbox`   | A controlled checkbox component integrated with React Hook Form.              |
 | `RHFInput`      | A text input field wired to React Hook Form with validation support.          |
 | `RHFPhoneInput` | A phone number input component styled and connected to React Hook Form.       |
 | `RHFRadioGroup` | A group of radio buttons managed by React Hook Form.                          |
 | `RHFSelect`     | A select dropdown component that works seamlessly with React Hook Form.       |
-| `RHFSwitch`     | A toggle switch component linked to a boolean field in React Hook Form. hooks |
+| `RHFSwitch`     | A toggle switch component linked to a boolean field in React Hook Form.       |
 | `RHFTextArea`   | A textarea component bound to React Hook Form for multi-line input.           |

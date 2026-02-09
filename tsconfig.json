@@ -14,5 +14,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["**/*.test.tsx", "**/*.test.ts", "src/test-setup.ts", "src/test-utils.tsx"]
 }

@@ -16,7 +16,7 @@ type FormValues = {
   comment: string;
   fruit: string;
   language: string;
-  taggle: boolean;
+  toggle: boolean;
   phoneNumber: string;
 };
 
@@ -29,8 +29,8 @@ const Form = () => {
       comment: "",
       fruit: "",
       language: "",
-      taggle: false,
-      phoneNumber: ""
+      toggle: false,
+      phoneNumber: "",
     },
   });
 
@@ -85,14 +85,14 @@ const Form = () => {
             name="comment"
             control={methods.control}
             rules={{ required: "Comment is required" }}
-            placeholder="Plesae write your comment."
+            placeholder="Please write your comment."
           />
         </div>
         <div>
           <RHFRadioGroup
             options={radioButtonOptions}
             name="fruit"
-            rules={{ required: "Fruite is required" }}
+            rules={{ required: "Fruit is required" }}
             control={methods.control}
           />
         </div>
@@ -100,16 +100,19 @@ const Form = () => {
           <RHFSelect
             options={selectOptions}
             name="language"
-            rules={{ validate: (value) => value !== "" || "Please select a language" }}
+            rules={{
+              validate: (value) =>
+                value !== "" || "Please select a language",
+            }}
             control={methods.control}
           />
         </div>
         <div>
           <RHFSwitch
-            name="taggle"
+            name="toggle"
             control={methods.control}
-            onLable="On"
-            offLable="Off"
+            onLabel="On"
+            offLabel="Off"
           />
         </div>
         <div>

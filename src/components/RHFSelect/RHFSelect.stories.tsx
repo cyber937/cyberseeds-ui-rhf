@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, GroupBox } from "cyberseeds-ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFSelect } from "./RHFSelect";
 
@@ -16,18 +16,14 @@ const selectOptions = [
 ];
 
 const MyForm = () => {
-
-  const [formResult, setFormResult] = useState<FormValues>({ language: "" })
-
-  useEffect(() => {
-  }, [formResult])
+  const [formResult, setFormResult] = useState<FormValues>({ language: "" });
 
   const methods = useForm<FormValues>({
     defaultValues: { language: "" },
   });
 
   const onSubmit = (data: FormValues) => {
-    setFormResult(data)
+    setFormResult(data);
   };
 
   return (
@@ -51,8 +47,8 @@ const MyForm = () => {
         <p>language: {formResult.language}</p>
       </GroupBox>
     </div>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof RHFSelect> = {
   title: "Components/RHFSelect",
@@ -63,7 +59,5 @@ export default meta;
 type Story = StoryObj<typeof RHFSelect>;
 
 export const Default: Story = {
-  render: () => (
-    <MyForm />
-  ),
+  render: () => <MyForm />,
 };

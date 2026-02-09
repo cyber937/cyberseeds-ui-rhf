@@ -1,4 +1,4 @@
-import type { Color, Scale } from "cyberseeds-ui";
+import type { Scale } from "cyberseeds-ui";
 import { Select, SelectOption } from "cyberseeds-ui";
 import type {
   Control,
@@ -8,6 +8,7 @@ import type {
   RegisterOptions,
 } from "react-hook-form";
 import { Controller } from "react-hook-form";
+import { FieldError } from "../_shared/FieldError";
 
 interface SelectCompatibleProps {
   className?: string;
@@ -19,34 +20,37 @@ interface RHFSelectProps<T extends FieldValues, K extends Path<T>>
   name: K;
   control: Control<T>;
   scale?: Scale;
-  color?: Color;
   options: { label: string; value: PathValue<T, K> }[];
+  defaultValue?: PathValue<T, K>;
   rules?: RegisterOptions<T, K>;
 }
 
-export function RHFSelect<T extends object, K extends Path<T>>({
+export function RHFSelect<T extends FieldValues, K extends Path<T>>({
   name,
   control,
   scale = "md",
-  color = "blue",
   options = [],
+  defaultValue,
   rules,
   ...props
 }: RHFSelectProps<T, K>) {
   const safeOptions = Array.isArray(options) ? options : [];
+  const errorId = `${name}-error`;
   return (
     <Controller
       name={name}
       control={control}
+      defaultValue={defaultValue}
       rules={rules}
       render={({ field, fieldState }) => {
         return (
-          <div>
+          <div className="space-y-1">
             <Select
               value={field.value ?? ""}
               onChange={field.onChange}
               scale={scale}
-              color={color}
+              isInvalid={fieldState.error !== undefined}
+              aria-describedby={fieldState.error ? errorId : undefined}
               {...props}
             >
               {safeOptions.map((opt) => (
@@ -57,11 +61,7 @@ export function RHFSelect<T extends object, K extends Path<T>>({
                 />
               ))}
             </Select>
-            {fieldState.error && (
-              <p className="text-xs text-red-600 ml-3">
-                {fieldState.error.message}
-              </p>
-            )}
+            <FieldError error={fieldState.error} id={errorId} />
           </div>
         );
       }}

@@ -8,6 +8,7 @@ import type {
   RegisterOptions,
 } from "react-hook-form";
 import { Controller } from "react-hook-form";
+import { FieldError } from "../_shared/FieldError";
 
 interface RHFTextAreaProps<T extends FieldValues, K extends Path<T>>
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -21,7 +22,7 @@ interface RHFTextAreaProps<T extends FieldValues, K extends Path<T>>
   rules?: RegisterOptions<T, K>;
 }
 
-export function RHFTextArea<T extends object, K extends Path<T>>({
+export function RHFTextArea<T extends FieldValues, K extends Path<T>>({
   name,
   control,
   label = "",
@@ -32,15 +33,16 @@ export function RHFTextArea<T extends object, K extends Path<T>>({
   rules,
   ...props
 }: RHFTextAreaProps<T, K>) {
+  const errorId = `${name}-error`;
   return (
     <Controller
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue}
+      defaultValue={defaultValue ?? ("" as PathValue<T, K>)}
       render={({ field, fieldState }) => {
         return (
-          <div className="-space-y-1">
+          <div className="space-y-1">
             <TextArea
               {...field}
               label={label}
@@ -48,13 +50,10 @@ export function RHFTextArea<T extends object, K extends Path<T>>({
               color={color}
               require={require}
               isInvalid={fieldState.error !== undefined}
+              aria-describedby={fieldState.error ? errorId : undefined}
               {...props}
             />
-            {fieldState.error && (
-              <p className="text-xs text-red-600 ml-3">
-                {fieldState.error.message}
-              </p>
-            )}
+            <FieldError error={fieldState.error} id={errorId} />
           </div>
         );
       }}

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, GroupBox } from "cyberseeds-ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFTextArea } from "./RHFTextArea";
 
@@ -9,18 +9,14 @@ type FormValues = {
 };
 
 const MyForm = () => {
-
-  const [formResult, setFormResult] = useState<FormValues>({ comment: "" })
-
-  useEffect(() => {
-  }, [formResult])
+  const [formResult, setFormResult] = useState<FormValues>({ comment: "" });
 
   const methods = useForm<FormValues>({
     defaultValues: { comment: "" },
   });
 
   const onSubmit = (data: FormValues) => {
-    setFormResult(data)
+    setFormResult(data);
   };
 
   return (
@@ -34,7 +30,7 @@ const MyForm = () => {
                 name="comment"
                 control={methods.control}
                 rules={{ required: "Comment is required" }}
-                placeholder="Plesae write your comment."
+                placeholder="Please write your comment."
               />
             </div>
           </div>
@@ -45,8 +41,8 @@ const MyForm = () => {
         <p>comment: {formResult.comment}</p>
       </GroupBox>
     </div>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof RHFTextArea> = {
   title: "Components/RHFTextArea",
@@ -57,7 +53,5 @@ export default meta;
 type Story = StoryObj<typeof RHFTextArea>;
 
 export const Default: Story = {
-  render: () => (
-    <MyForm />
-  ),
+  render: () => <MyForm />,
 };

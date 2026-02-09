@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, GroupBox } from "cyberseeds-ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFInput } from "./RHFInput";
 
@@ -10,18 +10,14 @@ type FormValues = {
 };
 
 const MyForm = () => {
-
-  const [formResult, setFormResult] = useState<FormValues>({ firstName: "", lastName: "" })
-
-  useEffect(() => {
-  }, [formResult])
+  const [formResult, setFormResult] = useState<FormValues>({ firstName: "", lastName: "" });
 
   const methods = useForm<FormValues>({
     defaultValues: { firstName: "", lastName: "" },
   });
 
   const onSubmit = (data: FormValues) => {
-    setFormResult(data)
+    setFormResult(data);
   };
 
   return (
@@ -56,8 +52,8 @@ const MyForm = () => {
         <p>lastName: {formResult.lastName}</p>
       </GroupBox>
     </div>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof RHFInput> = {
   title: "Components/RHFInput",
@@ -68,7 +64,5 @@ export default meta;
 type Story = StoryObj<typeof RHFInput>;
 
 export const Default: Story = {
-  render: () => (
-    <MyForm />
-  ),
+  render: () => <MyForm />,
 };

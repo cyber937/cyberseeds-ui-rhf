@@ -8,6 +8,7 @@ import type {
   RegisterOptions,
 } from "react-hook-form";
 import { Controller } from "react-hook-form";
+import { FieldError } from "../_shared/FieldError";
 
 interface RadioGroupCompatibleProps {
   className?: string;
@@ -25,7 +26,7 @@ interface RHFRadioGroupProps<T extends FieldValues, K extends Path<T>>
   rules?: RegisterOptions<T, K>;
 }
 
-export function RHFRadioGroup<T extends object, K extends Path<T>>({
+export function RHFRadioGroup<T extends FieldValues, K extends Path<T>>({
   name,
   control,
   scale = "md",
@@ -35,6 +36,8 @@ export function RHFRadioGroup<T extends object, K extends Path<T>>({
   rules,
   ...props
 }: RHFRadioGroupProps<T, K>) {
+  const safeOptions = Array.isArray(options) ? options : [];
+  const errorId = `${name}-error`;
   return (
     <Controller
       name={name}
@@ -43,7 +46,7 @@ export function RHFRadioGroup<T extends object, K extends Path<T>>({
       rules={rules}
       render={({ field, fieldState }) => {
         return (
-          <div>
+          <div className="space-y-1">
             <RadioGroup
               value={field.value as string}
               onChange={field.onChange}
@@ -51,7 +54,7 @@ export function RHFRadioGroup<T extends object, K extends Path<T>>({
               color={color}
               {...props}
             >
-              {options.map((opt) => (
+              {safeOptions.map((opt) => (
                 <RadioGroup.Option
                   key={opt.value}
                   label={opt.label}
@@ -59,9 +62,7 @@ export function RHFRadioGroup<T extends object, K extends Path<T>>({
                 />
               ))}
             </RadioGroup>
-            {fieldState.error && (
-              <p className="text-xs text-red-600">{fieldState.error.message}</p>
-            )}
+            <FieldError error={fieldState.error} id={errorId} />
           </div>
         );
       }}

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, GroupBox } from "cyberseeds-ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFPhoneInput } from "./RHFPhoneInput";
 
@@ -9,18 +9,14 @@ type FormValues = {
 };
 
 const MyForm = () => {
-
-  const [formResult, setFormResult] = useState<FormValues>({ phoneNumber: "" })
-
-  useEffect(() => {
-  }, [formResult])
+  const [formResult, setFormResult] = useState<FormValues>({ phoneNumber: "" });
 
   const methods = useForm<FormValues>({
     defaultValues: { phoneNumber: "" },
   });
 
   const onSubmit = (data: FormValues) => {
-    setFormResult(data)
+    setFormResult(data);
   };
 
   return (
@@ -44,8 +40,8 @@ const MyForm = () => {
         <p>phoneNumber: {formResult.phoneNumber}</p>
       </GroupBox>
     </div>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof RHFPhoneInput> = {
   title: "Components/RHFPhoneInput",
@@ -56,7 +52,5 @@ export default meta;
 type Story = StoryObj<typeof RHFPhoneInput>;
 
 export const Default: Story = {
-  render: () => (
-    <MyForm />
-  ),
+  render: () => <MyForm />,
 };
