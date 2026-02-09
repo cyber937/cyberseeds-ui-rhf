@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, GroupBox } from "cyberseeds-ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFCheckbox } from "./RHFCheckbox";
 
@@ -9,20 +9,14 @@ type FormValues = {
 };
 
 const MyForm = () => {
-
-  const [formResult, setFormResult] = useState<FormValues>({ isStudent: false })
-
-  useEffect(() => {
-  }, [formResult])
+  const [formResult, setFormResult] = useState<FormValues>({ isStudent: false });
 
   const methods = useForm<FormValues>({
     defaultValues: { isStudent: false },
   });
 
-  const isStudent = methods.watch("isStudent");
-
   const onSubmit = (data: FormValues) => {
-    setFormResult(data)
+    setFormResult(data);
     console.log("Submitted:", data);
   };
 
@@ -44,8 +38,8 @@ const MyForm = () => {
         <p>isStudent: {formResult.isStudent ? "true" : "false"}</p>
       </GroupBox>
     </div>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof RHFCheckbox> = {
   title: "Components/RHFCheckbox",
@@ -56,7 +50,5 @@ export default meta;
 type Story = StoryObj<typeof RHFCheckbox>;
 
 export const Default: Story = {
-  render: () => (
-    <MyForm />
-  ),
+  render: () => <MyForm />,
 };

@@ -1,26 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, GroupBox } from "cyberseeds-ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFSwitch } from "./RHFSwitch";
 
 type FormValues = {
-  taggle: boolean;
+  toggle: boolean;
 };
 
 const MyForm = () => {
-
-  const [formResult, setFormResult] = useState<FormValues>({ taggle: false })
-
-  useEffect(() => {
-  }, [formResult])
+  const [formResult, setFormResult] = useState<FormValues>({ toggle: false });
 
   const methods = useForm<FormValues>({
-    defaultValues: { taggle: false },
+    defaultValues: { toggle: false },
   });
 
   const onSubmit = (data: FormValues) => {
-    setFormResult(data)
+    setFormResult(data);
   };
 
   return (
@@ -30,10 +26,10 @@ const MyForm = () => {
           <div className="space-y-3">
             <div>
               <RHFSwitch
-                name="taggle"
+                name="toggle"
                 control={methods.control}
-                onLable="On"
-                offLable="Off"
+                onLabel="On"
+                offLabel="Off"
               />
             </div>
           </div>
@@ -41,11 +37,11 @@ const MyForm = () => {
         </form>
       </FormProvider>
       <GroupBox label="Form Result:">
-        <p>taggle: {formResult.taggle ? "true" : "false"}</p>
+        <p>toggle: {formResult.toggle ? "true" : "false"}</p>
       </GroupBox>
     </div>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof RHFSwitch> = {
   title: "Components/RHFSwitch",
@@ -56,7 +52,5 @@ export default meta;
 type Story = StoryObj<typeof RHFSwitch>;
 
 export const Default: Story = {
-  render: () => (
-    <MyForm />
-  ),
+  render: () => <MyForm />,
 };

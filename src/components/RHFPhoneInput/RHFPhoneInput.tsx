@@ -8,6 +8,7 @@ import type {
   RegisterOptions,
 } from "react-hook-form";
 import { Controller } from "react-hook-form";
+import { FieldError } from "../_shared/FieldError";
 
 interface RHFPhoneInputProps<T extends FieldValues, K extends Path<T>>
   extends Omit<
@@ -22,11 +23,9 @@ interface RHFPhoneInputProps<T extends FieldValues, K extends Path<T>>
   require?: boolean;
   defaultValue?: PathValue<T, K>;
   rules?: RegisterOptions<T, K>;
-  value?: string;
-  onChange?: (value: string) => void;
 }
 
-export function RHFPhoneInput<T extends object, K extends Path<T>>({
+export function RHFPhoneInput<T extends FieldValues, K extends Path<T>>({
   name,
   control,
   label = "",
@@ -37,12 +36,13 @@ export function RHFPhoneInput<T extends object, K extends Path<T>>({
   rules,
   ...props
 }: RHFPhoneInputProps<T, K>) {
+  const errorId = `${name}-error`;
   return (
     <Controller
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue}
+      defaultValue={defaultValue ?? ("" as PathValue<T, K>)}
       render={({ field, fieldState }) => {
         return (
           <div className="space-y-1">
@@ -54,13 +54,10 @@ export function RHFPhoneInput<T extends object, K extends Path<T>>({
               onChange={field.onChange}
               require={require}
               isInvalid={fieldState.error !== undefined}
+              aria-describedby={fieldState.error ? errorId : undefined}
               {...props}
             />
-            {fieldState.error && (
-              <p className="text-xs text-red-600 ml-3">
-                {fieldState.error.message}
-              </p>
-            )}
+            <FieldError error={fieldState.error} id={errorId} />
           </div>
         );
       }}

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, GroupBox } from "cyberseeds-ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { RHFRadioGroup } from "./RHFRadioGroup";
 
@@ -15,18 +15,14 @@ const radioButtonOptions = [
 ];
 
 const MyForm = () => {
-
-  const [formResult, setFormResult] = useState<FormValues>({ fruit: "apple" })
-
-  useEffect(() => {
-  }, [formResult])
+  const [formResult, setFormResult] = useState<FormValues>({ fruit: "apple" });
 
   const methods = useForm<FormValues>({
     defaultValues: { fruit: "apple" },
   });
 
   const onSubmit = (data: FormValues) => {
-    setFormResult(data)
+    setFormResult(data);
   };
 
   return (
@@ -38,8 +34,8 @@ const MyForm = () => {
               <RHFRadioGroup
                 options={radioButtonOptions}
                 name="fruit"
-                defaultValue="female"
-                rules={{ required: "Gender is required" }}
+                defaultValue="apple"
+                rules={{ required: "Fruit is required" }}
                 control={methods.control}
               />
             </div>
@@ -51,8 +47,8 @@ const MyForm = () => {
         <p>fruit: {formResult.fruit}</p>
       </GroupBox>
     </div>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof RHFRadioGroup> = {
   title: "Components/RHFRadioGroup",
@@ -63,7 +59,5 @@ export default meta;
 type Story = StoryObj<typeof RHFRadioGroup>;
 
 export const Default: Story = {
-  render: () => (
-    <MyForm />
-  ),
+  render: () => <MyForm />,
 };

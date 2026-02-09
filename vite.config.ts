@@ -14,16 +14,18 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       entry: path.resolve(__dirname, "./src/components/index.tsx"),
-      name: "CyberseedsUI React-Hool-Form",
+      name: "CyberseedsUI React-Hook-Form",
       fileName: "cyberseeds-ui-rhf",
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "react-hook-form", "cyberseeds-ui"],
       output: {
         assetFileNames: "style.css",
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
+          "react-hook-form": "ReactHookForm",
+          "cyberseeds-ui": "CyberseedsUI",
         },
       },
     },
