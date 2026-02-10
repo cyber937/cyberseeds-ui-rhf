@@ -44,7 +44,7 @@ export function RHFSelect<T extends FieldValues, K extends Path<T>>({
       rules={rules}
       render={({ field, fieldState }) => {
         return (
-          <div className="space-y-1">
+          <div>
             <Select
               value={field.value ?? ""}
               onChange={field.onChange}

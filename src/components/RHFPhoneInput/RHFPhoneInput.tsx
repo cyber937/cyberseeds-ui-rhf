@@ -13,7 +13,7 @@ import { FieldError } from "../_shared/FieldError";
 interface RHFPhoneInputProps<T extends FieldValues, K extends Path<T>>
   extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
-    "onChange" | "value"
+    "onChange" | "value" | "color"
   > {
   name: K;
   control: Control<T>;
@@ -45,7 +45,7 @@ export function RHFPhoneInput<T extends FieldValues, K extends Path<T>>({
       defaultValue={defaultValue ?? ("" as PathValue<T, K>)}
       render={({ field, fieldState }) => {
         return (
-          <div className="space-y-1">
+          <div>
             <PhoneInput
               label={label}
               scale={scale}

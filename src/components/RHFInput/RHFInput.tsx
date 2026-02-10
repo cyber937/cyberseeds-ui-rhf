@@ -11,7 +11,7 @@ import { Controller } from "react-hook-form";
 import { FieldError } from "../_shared/FieldError";
 
 interface RHFInputProps<T extends FieldValues, K extends Path<T>>
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "color"> {
   name: K;
   control: Control<T>;
   label?: string;
@@ -42,7 +42,7 @@ export function RHFInput<T extends FieldValues, K extends Path<T>>({
       defaultValue={defaultValue ?? ("" as PathValue<T, K>)}
       render={({ field, fieldState }) => {
         return (
-          <div className="space-y-1">
+          <div>
             <Input
               {...field}
               value={field.value ?? ""}

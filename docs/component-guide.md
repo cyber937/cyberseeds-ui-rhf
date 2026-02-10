@@ -218,7 +218,7 @@ import { RHFSwitch } from "cyberseeds-ui-rhf";
 | `color` | `Color` | Tailwind color |
 | `rules` | `RegisterOptions` | Validation rules |
 
-> **Migration note (v0.2.0):** `onLable`/`offLable` props were renamed to `onLabel`/`offLabel`. The old names still work but are deprecated and will be removed in a future version.
+> **Breaking change (v1.0.0):** The deprecated `onLable`/`offLable` props have been removed. Use `onLabel`/`offLabel` instead.
 
 ### RHFPhoneInput
 

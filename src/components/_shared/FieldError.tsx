@@ -8,7 +8,7 @@ interface FieldErrorProps {
 export function FieldError({ error, id }: FieldErrorProps) {
   if (!error?.message) return null;
   return (
-    <p id={id} className="text-xs text-red-600 ml-3" role="alert">
+    <p id={id} className="text-xs text-red-600 ml-2" style={{ marginTop: "4px" }} role="alert">
       {error.message}
     </p>
   );

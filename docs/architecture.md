@@ -167,7 +167,7 @@ Every RHF component follows this accessibility pattern:
 
 ```text
 cyberseeds-ui-rhf
-├── cyberseeds-ui (peerDependency: ^0.3.0, devDependency: ^0.3.1)
+├── cyberseeds-ui (peerDependency: ^1.0.0, devDependency: ^1.0.0)
 │   └── Components: Input, TextArea, Checkbox, Switch, Select, RadioGroup, PhoneInput
 ├── react-hook-form (peerDependency: ^7.57.0)
 │   └── Controller, useForm, FieldValues, Path, Control, RegisterOptions
@@ -175,7 +175,7 @@ cyberseeds-ui-rhf
 └── react-dom (peerDependency: ^19.1.0)
 ```
 
-`cyberseeds-ui` is listed as both a peerDependency (for consumers) and a devDependency (for local workspace development). It is marked as external in the Vite/Rollup build and NOT bundled.
+`cyberseeds-ui` is listed as both a peerDependency (`^1.0.0`, for consumers) and a devDependency (`^1.0.0`, for local workspace development). It is marked as external in the Vite/Rollup build and NOT bundled.
 
 ## Build Output
 

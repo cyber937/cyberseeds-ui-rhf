@@ -19,10 +19,6 @@ interface RHFSwitchProps<T extends FieldValues, K extends Path<T>> {
   defaultValue?: PathValue<T, K>;
   onLabel: string;
   offLabel: string;
-  /** @deprecated Use `onLabel` instead */
-  onLable?: string;
-  /** @deprecated Use `offLabel` instead */
-  offLable?: string;
   rules?: RegisterOptions<T, K>;
 }
 
@@ -34,26 +30,8 @@ export function RHFSwitch<T extends FieldValues, K extends Path<T>>({
   defaultValue,
   onLabel,
   offLabel,
-  onLable,
-  offLable,
   rules,
 }: RHFSwitchProps<T, K>) {
-  const resolvedOnLabel = onLabel ?? onLable ?? "";
-  const resolvedOffLabel = offLabel ?? offLable ?? "";
-
-  if (process.env.NODE_ENV !== "production") {
-    if (onLable !== undefined) {
-      console.warn(
-        "[cyberseeds-ui-rhf] RHFSwitch: `onLable` is deprecated. Use `onLabel` instead.",
-      );
-    }
-    if (offLable !== undefined) {
-      console.warn(
-        "[cyberseeds-ui-rhf] RHFSwitch: `offLable` is deprecated. Use `offLabel` instead.",
-      );
-    }
-  }
-
   const errorId = `${name}-error`;
   return (
     <Controller
@@ -63,14 +41,14 @@ export function RHFSwitch<T extends FieldValues, K extends Path<T>>({
       rules={rules}
       render={({ field, fieldState }) => {
         return (
-          <div className="space-y-1">
+          <div>
             <Switch
               checked={!!field.value}
               onClick={() => field.onChange(!field.value)}
               scale={scale}
               color={color}
-              onLabel={resolvedOnLabel}
-              offLabel={resolvedOffLabel}
+              onLabel={onLabel}
+              offLabel={offLabel}
               aria-invalid={fieldState.error ? true : undefined}
               aria-describedby={fieldState.error ? errorId : undefined}
             />

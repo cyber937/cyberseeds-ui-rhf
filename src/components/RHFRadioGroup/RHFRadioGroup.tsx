@@ -46,7 +46,7 @@ export function RHFRadioGroup<T extends FieldValues, K extends Path<T>>({
       rules={rules}
       render={({ field, fieldState }) => {
         return (
-          <div className="space-y-1">
+          <div>
             <RadioGroup
               value={field.value as string}
               onChange={field.onChange}
