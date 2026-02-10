@@ -30,8 +30,7 @@ cyberseeds-ui-rhf/
 │   │   ├── RHFCheckbox/
 │   │   │   ├── RHFCheckbox.tsx
 │   │   │   ├── RHFCheckbox.test.tsx
-│   │   │   ├── RHFCheckbox.stories.tsx
-│   │   │   └── index.tsx
+│   │   │   └── RHFCheckbox.stories.tsx
 │   │   ├── RHFInput/
 │   │   ├── RHFPhoneInput/
 │   │   ├── RHFRadioGroup/
@@ -309,13 +308,13 @@ npm run lint -w cyberseeds-ui-rhf
 - **Accessibility** — always add `aria-invalid` and `aria-describedby` linked to the error element
 - **Wrapper** — wrap component + error in `<div className="space-y-1">`
 - **Props interface** — define in the same file as the component
-- **File structure** — one component per directory with `.tsx`, `.stories.tsx`, and `index.tsx`
+- **File structure** — one component per directory with `.tsx`, `.test.tsx`, and `.stories.tsx`
 - **Naming** — prefix all component names with `RHF` (e.g., `RHFInput`, `RHFSelect`)
 - **CSS** — use Tailwind CSS utility classes; avoid inline styles
 
 ## Relationship with cyberseeds-ui
 
-This package depends on `cyberseeds-ui` as both a **peerDependency** (`^0.3.0`) and a **devDependency** (`^0.3.1`). When building:
+This package depends on `cyberseeds-ui` as both a **peerDependency** (`^1.0.0`) and a **devDependency** (`^1.0.0`). When building:
 
 1. Ensure `cyberseeds-ui` is built first (or available in `node_modules`)
 2. Import components and types directly from `"cyberseeds-ui"`

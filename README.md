@@ -29,12 +29,13 @@ yarn add cyberseeds-ui cyberseeds-ui-rhf react-hook-form zod
 | `react` | `^19.1.0` |
 | `react-dom` | `^19.1.0` |
 | `react-hook-form` | `^7.57.0` |
-| `cyberseeds-ui` | `^0.3.0` |
+| `cyberseeds-ui` | `^1.0.0` |
 
 ### Version Compatibility
 
 | cyberseeds-ui-rhf | cyberseeds-ui | react-hook-form |
 | --- | --- | --- |
+| `1.0.x` | `1.0.x` | `7.x` |
 | `0.2.x` | `0.3.x` | `7.x` |
 | `0.1.x` | `0.2.x – 0.3.x` | `7.x` |
 

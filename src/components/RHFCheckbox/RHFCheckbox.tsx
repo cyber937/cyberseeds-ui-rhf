@@ -11,7 +11,7 @@ import { Controller } from "react-hook-form";
 import { FieldError } from "../_shared/FieldError";
 
 interface RHFCheckboxProps<T extends FieldValues, K extends Path<T>>
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "color"> {
   name: K;
   control: Control<T>;
   label?: string;
@@ -40,7 +40,7 @@ export function RHFCheckbox<T extends FieldValues, K extends Path<T>>({
       rules={rules}
       render={({ field, fieldState }) => {
         return (
-          <div className="space-y-1">
+          <div>
             <Checkbox
               {...field}
               checked={field.value}
