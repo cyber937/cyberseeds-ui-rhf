@@ -164,6 +164,71 @@ import { RHFRadioGroup } from "cyberseeds-ui-rhf";
 | `options` | `{ label: string; value: PathValue<T, K> }[]` | Radio options |
 | `rules` | `RegisterOptions` | Validation rules |
 
+### RHFButtonGroup
+
+Segmented button group for single or multi-select values.
+
+```tsx
+import { RHFButtonGroup } from "cyberseeds-ui-rhf";
+
+<RHFButtonGroup
+  name="size"
+  control={control}
+  scale="md"
+  color="blue"
+  options={[
+    { label: "Small", value: "sm" },
+    { label: "Medium", value: "md" },
+    { label: "Large", value: "lg" },
+  ]}
+  rules={{ validate: (v) => (v !== "" && v !== undefined) || "Required" }}
+/>
+```
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `name` | `Path<T>` | Field name |
+| `control` | `Control<T>` | Form control |
+| `scale` | `Scale` | Size variant |
+| `color` | `Color` | Tailwind color |
+| `options` | `{ label: string; value: string }[]` | Button options |
+| `multiple` | `boolean` | Enable multi-select (default: `false`) |
+| `rules` | `RegisterOptions` | Validation rules |
+| `defaultValue` | `PathValue<T, K>` | Initial value |
+
+> **Multi-select mode:** Set `multiple={true}` and use `string[]` as the field type. The form value will be an array of selected values.
+
+### RHFButtonTabs
+
+Button-style tab selector for single-value fields.
+
+```tsx
+import { RHFButtonTabs } from "cyberseeds-ui-rhf";
+
+<RHFButtonTabs
+  name="view"
+  control={control}
+  scale="md"
+  color="indigo"
+  options={[
+    { label: "Grid", value: "grid" },
+    { label: "List", value: "list" },
+    { label: "Table", value: "table" },
+  ]}
+  rules={{ validate: (v) => (v !== "" && v !== undefined) || "Required" }}
+/>
+```
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `name` | `Path<T>` | Field name |
+| `control` | `Control<T>` | Form control |
+| `scale` | `Scale` | Size variant |
+| `color` | `Color` | Tailwind color |
+| `options` | `{ label: string; value: string }[]` | Tab options |
+| `rules` | `RegisterOptions` | Validation rules |
+| `defaultValue` | `PathValue<T, K>` | Initial value |
+
 ### RHFCheckbox
 
 Boolean checkbox field with validation support.
@@ -263,6 +328,8 @@ import {
   RHFCheckbox,
   RHFSwitch,
   RHFPhoneInput,
+  RHFButtonGroup,
+  RHFButtonTabs,
 } from "cyberseeds-ui-rhf";
 
 const schema = z.object({

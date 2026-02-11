@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, UIColorProvider } from "cyberseeds-ui";
 import { FormProvider, useForm } from "react-hook-form";
+import { RHFButtonGroup } from "./RHFButtonGroup/RHFButtonGroup";
+import { RHFButtonTabs } from "./RHFButtonTabs/RHFButtonTabs";
 import { RHFCheckbox } from "./RHFCheckbox/RHFCheckbox";
 import { RHFInput } from "./RHFInput/RHFInput";
 import { RHFPhoneInput } from "./RHFPhoneInput/RHFPhoneInput";
@@ -18,6 +20,8 @@ type FormValues = {
   language: string;
   toggle: boolean;
   phoneNumber: string;
+  size: string;
+  view: string;
 };
 
 const Form = () => {
@@ -31,6 +35,8 @@ const Form = () => {
       language: "",
       toggle: false,
       phoneNumber: "",
+      size: "md",
+      view: "grid",
     },
   });
 
@@ -49,6 +55,18 @@ const Form = () => {
     { label: "English", value: "english" },
     { label: "Spanish", value: "spanish" },
     { label: "French", value: "french" },
+  ];
+
+  const sizeOptions = [
+    { label: "Small", value: "sm" },
+    { label: "Medium", value: "md" },
+    { label: "Large", value: "lg" },
+  ];
+
+  const viewOptions = [
+    { label: "Grid", value: "grid" },
+    { label: "List", value: "list" },
+    { label: "Table", value: "table" },
   ];
 
   return (
@@ -120,6 +138,20 @@ const Form = () => {
             label="Phone Number"
             name="phoneNumber"
             rules={{ required: "Phone Number is required" }}
+            control={methods.control}
+          />
+        </div>
+        <div>
+          <RHFButtonGroup
+            options={sizeOptions}
+            name="size"
+            control={methods.control}
+          />
+        </div>
+        <div>
+          <RHFButtonTabs
+            options={viewOptions}
+            name="view"
             control={methods.control}
           />
         </div>

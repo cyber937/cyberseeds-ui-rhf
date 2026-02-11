@@ -1,3 +1,5 @@
+export { RHFButtonGroup } from "./RHFButtonGroup/RHFButtonGroup";
+export { RHFButtonTabs } from "./RHFButtonTabs/RHFButtonTabs";
 export { RHFCheckbox } from "./RHFCheckbox/RHFCheckbox";
 export { RHFInput } from "./RHFInput/RHFInput";
 export { RHFPhoneInput } from "./RHFPhoneInput/RHFPhoneInput";
