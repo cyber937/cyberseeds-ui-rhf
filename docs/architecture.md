@@ -98,7 +98,7 @@ interface RHFInputProps<T extends FieldValues, K extends Path<T>>
 
 This allows passing any standard HTML input attribute (e.g., `placeholder`, `maxLength`, `autoFocus`).
 
-**Pattern B — Custom Props** (RHFSelect, RHFRadioGroup, RHFCheckbox, RHFSwitch):
+**Pattern B — Custom Props** (RHFSelect, RHFRadioGroup, RHFCheckbox, RHFSwitch, RHFButtonGroup, RHFButtonTabs):
 
 ```tsx
 interface RHFSelectProps<T extends FieldValues, K extends Path<T>> {
@@ -124,6 +124,8 @@ Custom props are used when the component has a specialized API (e.g., `options` 
 | `RHFSelect` | `Select` + `SelectOption` | `value` / `onChange` (standard) |
 | `RHFRadioGroup` | `RadioGroup` + `RadioGroup.Option` | `value` / `onChange` (standard) |
 | `RHFPhoneInput` | `PhoneInput` | `value` / custom `onChange(value: string)` |
+| `RHFButtonGroup` | `ButtonGroup` + `ButtonGroup.Item` | `value` / `onChange` (string or string[]) |
+| `RHFButtonTabs` | `ButtonTabs` + `ButtonTabs.List/Trigger` | `value` / `onChange` (string) |
 
 ## Error Display
 
@@ -152,7 +154,7 @@ The `FieldError` component renders:
 - Consistent styling: `text-xs text-red-600 ml-3`
 - Returns `null` when no error is present
 
-All 7 components now display validation errors and support `aria-invalid` + `aria-describedby`.
+All 9 components now display validation errors and support `aria-invalid` + `aria-describedby`.
 
 ### Accessibility Pattern
 
@@ -167,15 +169,15 @@ Every RHF component follows this accessibility pattern:
 
 ```text
 cyberseeds-ui-rhf
-├── cyberseeds-ui (peerDependency: ^1.0.0, devDependency: ^1.0.0)
-│   └── Components: Input, TextArea, Checkbox, Switch, Select, RadioGroup, PhoneInput
+├── cyberseeds-ui (peerDependency: ^1.1.0, devDependency: ^1.1.0)
+│   └── Components: Input, TextArea, Checkbox, Switch, Select, RadioGroup, PhoneInput, ButtonGroup, ButtonTabs
 ├── react-hook-form (peerDependency: ^7.57.0)
 │   └── Controller, useForm, FieldValues, Path, Control, RegisterOptions
 ├── react (peerDependency: ^19.1.0)
 └── react-dom (peerDependency: ^19.1.0)
 ```
 
-`cyberseeds-ui` is listed as both a peerDependency (`^1.0.0`, for consumers) and a devDependency (`^1.0.0`, for local workspace development). It is marked as external in the Vite/Rollup build and NOT bundled.
+`cyberseeds-ui` is listed as both a peerDependency (`^1.1.0`, for consumers) and a devDependency (`^1.1.0`, for local workspace development). It is marked as external in the Vite/Rollup build and NOT bundled.
 
 ## Build Output
 
