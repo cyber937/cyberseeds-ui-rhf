@@ -30,7 +30,7 @@ export function RHFRadioGroup<T extends FieldValues, K extends Path<T>>({
   name,
   control,
   scale = "md",
-  color = "blue",
+  color,
   options,
   defaultValue,
   rules,

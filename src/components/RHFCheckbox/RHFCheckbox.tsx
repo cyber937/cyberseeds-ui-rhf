@@ -26,7 +26,7 @@ export function RHFCheckbox<T extends FieldValues, K extends Path<T>>({
   control,
   label,
   scale = "md",
-  color = "blue",
+  color,
   defaultValue,
   rules,
   ...props

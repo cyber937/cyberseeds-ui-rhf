@@ -38,7 +38,7 @@ export function RHFSlider<T extends FieldValues, K extends Path<T>>({
   control,
   label,
   scale = "md",
-  color = "blue",
+  color,
   defaultValue,
   rules,
   min = 0,

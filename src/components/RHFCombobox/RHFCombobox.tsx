@@ -47,7 +47,7 @@ export function RHFCombobox<T extends FieldValues, K extends Path<T>>({
   control,
   label = "",
   scale = "md",
-  color = "blue",
+  color,
   require = false,
   defaultValue,
   rules,

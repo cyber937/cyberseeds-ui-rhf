@@ -26,7 +26,7 @@ export function RHFSwitch<T extends FieldValues, K extends Path<T>>({
   name,
   control,
   scale = "md",
-  color = "blue",
+  color,
   defaultValue,
   onLabel,
   offLabel,
