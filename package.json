@@ -6,6 +6,10 @@
     "react-components"
   ],
   "homepage": "https://github.com/cyber937/cyberseeds-ui-rhf",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyber937/cyberseeds-ui-rhf.git"
+  },
   "type": "module",
   "files": [
     "dist",
@@ -26,6 +30,7 @@
     }
   },
   "scripts": {
+    "prepublishOnly": "npm run build",
     "dev": "vite",
     "build:css": "tailwindcss -i ./src/index.css -o ./dist/style.css --minify",
     "build": "tsc -b && vite build && npm run build:css",

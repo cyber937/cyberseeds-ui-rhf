@@ -1,9 +1,20 @@
 name: Build and Publish to npm
 
+# バージョンタグを push したときだけ公開する（例: v2.2.1）。
+# 以前は main への push で動いていたため、バージョン据え置きのコミットでは
+# 毎回 403 で失敗していた。
 on:
   push:
-    branches:
-      - main  # または releaseブランチなど
+    tags:
+      - 'v*'
+
+# npm のトラステッドパブリッシング（OIDC）で公開する。トークンは使わない。
+# npmjs.com 側の Settings → Trusted Publisher に
+#   user: cyber937 / repo: cyberseeds-ui-rhf / workflow: publish.yml
+# が登録されていることが前提。
+permissions:
+  id-token: write # OIDC トークンの発行に必須
+  contents: read
 
 jobs:
   build-and-publish:
@@ -13,19 +24,46 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      # setup-node は v6 を使うこと。
+      # v4/v5 は registry-url を指定すると .npmrc に空の _authToken 行を書き、
+      # npm が「認証済み」と誤認して OIDC の交換を飛ばしてしまう。
+      # 症状は分かりにくい ENEEDAUTH / 404 になる。
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'  # 任意のNodeバージョン
-          registry-url: 'https://registry.npmjs.org/'
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+
+      # トラステッドパブリッシングは npm 11.5.1 以降が必要。
+      # 11.6.x には OIDC の不具合があるため 11 系の最新に上げる
+      # （12 系は install スクリプトの既定が変わるのでまだ上げない）。
+      - name: Update npm
+        run: npm i -g npm@11
 
       - name: Install dependencies
         run: npm ci
 
+      # タグと package.json のバージョンがずれていたら止める。
+      # ずれたまま進むと、意図しない版を公開するか 403 で落ちる。
+      - name: Verify tag matches package.json version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PKG="$(node -p "require('./package.json').version")"
+          if [ "$TAG" != "$PKG" ]; then
+            echo "::error::タグ v$TAG と package.json の $PKG が一致しません"
+            exit 1
+          fi
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test:run
+
       - name: Build package
         run: npm run build
 
+      # NODE_AUTH_TOKEN は付けないこと。付けるとトークン認証が優先され OIDC が働かない。
       - name: Publish to npm
-        run: npm publish --access public  # → scopedパッケージなら必要
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --provenance
