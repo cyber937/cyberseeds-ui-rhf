@@ -1,4 +1,4 @@
-import type { Color, Scale } from "cyberseeds-ui";
+import type { Color, LabelPlacement, Scale } from "cyberseeds-ui";
 import { Input } from "cyberseeds-ui";
 import type {
   Control,
@@ -15,6 +15,8 @@ interface RHFInputProps<T extends FieldValues, K extends Path<T>>
   name: K;
   control: Control<T>;
   label?: string;
+  /** Where the label sits. Defaults to above the field. */
+  labelPlacement?: LabelPlacement;
   scale?: Scale;
   color?: Color;
   require?: boolean;
@@ -26,6 +28,7 @@ export function RHFInput<T extends FieldValues, K extends Path<T>>({
   name,
   control,
   label = "",
+  labelPlacement,
   scale = "md",
   color,
   require = false,
@@ -47,6 +50,7 @@ export function RHFInput<T extends FieldValues, K extends Path<T>>({
               {...field}
               value={field.value ?? ""}
               label={label}
+              labelPlacement={labelPlacement}
               scale={scale}
               color={color}
               require={require}

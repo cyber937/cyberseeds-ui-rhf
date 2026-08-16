@@ -1,4 +1,4 @@
-import type { Scale } from "cyberseeds-ui";
+import type { Color, LabelPlacement, Scale } from "cyberseeds-ui";
 import { Select, SelectOption } from "cyberseeds-ui";
 import type {
   Control,
@@ -19,6 +19,13 @@ interface RHFSelectProps<T extends FieldValues, K extends Path<T>>
   extends SelectCompatibleProps {
   name: K;
   control: Control<T>;
+  /** Rendered above (or beside) the select and linked by `htmlFor`. */
+  label?: string;
+  /** Where the label sits. Defaults to above the select. */
+  labelPlacement?: LabelPlacement;
+  /** Shows the required marker on the label. */
+  require?: boolean;
+  color?: Color;
   scale?: Scale;
   options: { label: string; value: PathValue<T, K> }[];
   defaultValue?: PathValue<T, K>;
@@ -28,6 +35,10 @@ interface RHFSelectProps<T extends FieldValues, K extends Path<T>>
 export function RHFSelect<T extends FieldValues, K extends Path<T>>({
   name,
   control,
+  label,
+  labelPlacement,
+  require = false,
+  color,
   scale = "md",
   options = [],
   defaultValue,
@@ -48,6 +59,10 @@ export function RHFSelect<T extends FieldValues, K extends Path<T>>({
             <Select
               value={field.value ?? ""}
               onChange={field.onChange}
+              label={label}
+              labelPlacement={labelPlacement}
+              require={require}
+              color={color}
               scale={scale}
               isInvalid={fieldState.error !== undefined}
               aria-describedby={fieldState.error ? errorId : undefined}
