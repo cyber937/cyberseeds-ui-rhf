@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # setup-node は v6 を使うこと。
       # v4/v5 は registry-url を指定すると .npmrc に空の _authToken 行を書き、
