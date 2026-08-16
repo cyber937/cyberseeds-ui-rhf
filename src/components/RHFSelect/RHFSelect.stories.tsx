@@ -61,3 +61,33 @@ type Story = StoryObj<typeof RHFSelect>;
 export const Default: Story = {
   render: () => <MyForm />,
 };
+
+/**
+ * ラベル付き。`htmlFor` で select と結びつくので、ラベルを押すと開く。
+ *
+ * `labelPlacement="start"` にすると横に並ぶ（絞り込みの並びなど）。
+ */
+const LabelForm = ({ placement }: { placement?: "top" | "start" }) => {
+  const methods = useForm<FormValues>({ defaultValues: { language: "" } });
+  return (
+    <FormProvider {...methods}>
+      <RHFSelect
+        options={selectOptions}
+        name="language"
+        label="言語"
+        labelPlacement={placement}
+        require
+        control={methods.control}
+      />
+    </FormProvider>
+  );
+};
+
+export const WithLabel: Story = {
+  render: () => (
+    <div className="flex flex-col gap-6">
+      <LabelForm />
+      <LabelForm placement="start" />
+    </div>
+  ),
+};
