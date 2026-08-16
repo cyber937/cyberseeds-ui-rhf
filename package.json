@@ -15,14 +15,14 @@
     "dist",
     "dist/style.css"
   ],
-  "main": "dist/cyberseeds-ui-rhf-umd.cjs",
+  "main": "dist/cyberseeds-ui-rhf.umd.cjs",
   "module": "dist/cyberseeds-ui-rhf.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/cyberseeds-ui-rhf.js",
-      "require": "./dist/cyberseeds-ui-rhf-umd.cjs",
+      "require": "./dist/cyberseeds-ui-rhf.umd.cjs",
       "default": "./dist/cyberseeds-ui-rhf.js"
     },
     "./style.css": {
@@ -33,7 +33,8 @@
     "prepublishOnly": "npm run build",
     "dev": "vite",
     "build:css": "tailwindcss -i ./src/index.css -o ./dist/style.css --minify",
-    "build": "tsc -b && vite build && npm run build:css",
+    "build": "tsc -b && vite build && npm run build:css && npm run check:entries",
+    "check:entries": "node scripts/check-package-entries.mjs",
     "lint": "eslint .",
     "test": "vitest --project unit",
     "test:run": "vitest run --project unit",
