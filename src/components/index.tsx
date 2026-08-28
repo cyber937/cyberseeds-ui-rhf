@@ -1,5 +1,6 @@
 export { RHFButtonGroup } from "./RHFButtonGroup/RHFButtonGroup";
 export { RHFButtonTabs } from "./RHFButtonTabs/RHFButtonTabs";
+export { RHFBooleanSelect } from "./RHFBooleanSelect/RHFBooleanSelect";
 export { RHFCheckbox } from "./RHFCheckbox/RHFCheckbox";
 export { RHFCombobox } from "./RHFCombobox/RHFCombobox";
 export { RHFDatePicker } from "./RHFDatePicker/RHFDatePicker";
